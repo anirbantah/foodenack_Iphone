@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F91282261A5FB24700BBC00C /* FNmenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91282251A5FB24700BBC00C /* FNmenuViewController.m */; };
+		F91282291A5FE2C700BBC00C /* FNaddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91282281A5FE2C700BBC00C /* FNaddItemViewController.m */; };
+		F91D62FA1A5D296D000B72AC /* FNaddmenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D62F91A5D296D000B72AC /* FNaddmenuViewController.m */; };
+		F91D63001A5D597D000B72AC /* FNcouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D62FF1A5D597D000B72AC /* FNcouponsViewController.m */; };
 		F938DD801A5A5BC800A1F2D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F938DD7F1A5A5BC800A1F2D6 /* main.m */; };
 		F938DD831A5A5BC800A1F2D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F938DD821A5A5BC800A1F2D6 /* AppDelegate.m */; };
 		F938DD861A5A5BC800A1F2D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F938DD851A5A5BC800A1F2D6 /* ViewController.m */; };
@@ -14,6 +18,10 @@
 		F938DD8B1A5A5BC800A1F2D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F938DD8A1A5A5BC800A1F2D6 /* Images.xcassets */; };
 		F938DD8E1A5A5BC800A1F2D6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F938DD8C1A5A5BC800A1F2D6 /* LaunchScreen.xib */; };
 		F938DD9A1A5A5BC800A1F2D6 /* FoodenakTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F938DD991A5A5BC800A1F2D6 /* FoodenakTests.m */; };
+		F938DDA61A5A723600A1F2D6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F938DDA31A5A723600A1F2D6 /* Roboto-Bold.ttf */; };
+		F938DDA71A5A723600A1F2D6 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F938DDA41A5A723600A1F2D6 /* Roboto-Light.ttf */; };
+		F938DDA81A5A723600A1F2D6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F938DDA51A5A723600A1F2D6 /* Roboto-Medium.ttf */; };
+		F946A4781A5E561B00B4C341 /* FNredeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F946A4771A5E561B00B4C341 /* FNredeemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F91282241A5FB24700BBC00C /* FNmenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNmenuViewController.h; path = ../FNmenuViewController.h; sourceTree = "<group>"; };
+		F91282251A5FB24700BBC00C /* FNmenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNmenuViewController.m; path = ../FNmenuViewController.m; sourceTree = "<group>"; };
+		F91282271A5FE2C700BBC00C /* FNaddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNaddItemViewController.h; path = ../FNaddItemViewController.h; sourceTree = "<group>"; };
+		F91282281A5FE2C700BBC00C /* FNaddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNaddItemViewController.m; path = ../FNaddItemViewController.m; sourceTree = "<group>"; };
+		F91D62F81A5D296D000B72AC /* FNaddmenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNaddmenuViewController.h; path = ../FNaddmenuViewController.h; sourceTree = "<group>"; };
+		F91D62F91A5D296D000B72AC /* FNaddmenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNaddmenuViewController.m; path = ../FNaddmenuViewController.m; sourceTree = "<group>"; };
+		F91D62FE1A5D597D000B72AC /* FNcouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNcouponsViewController.h; path = ../FNcouponsViewController.h; sourceTree = "<group>"; };
+		F91D62FF1A5D597D000B72AC /* FNcouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNcouponsViewController.m; path = ../FNcouponsViewController.m; sourceTree = "<group>"; };
 		F938DD7A1A5A5BC800A1F2D6 /* Foodenak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodenak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F938DD7E1A5A5BC800A1F2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F938DD7F1A5A5BC800A1F2D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +56,11 @@
 		F938DD931A5A5BC800A1F2D6 /* FoodenakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodenakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F938DD981A5A5BC800A1F2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F938DD991A5A5BC800A1F2D6 /* FoodenakTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodenakTests.m; sourceTree = "<group>"; };
+		F938DDA31A5A723600A1F2D6 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		F938DDA41A5A723600A1F2D6 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		F938DDA51A5A723600A1F2D6 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		F946A4761A5E561B00B4C341 /* FNredeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FNredeemViewController.h; path = ../FNredeemViewController.h; sourceTree = "<group>"; };
+		F946A4771A5E561B00B4C341 /* FNredeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FNredeemViewController.m; path = ../FNredeemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +84,9 @@
 		F938DD711A5A5BC800A1F2D6 = {
 			isa = PBXGroup;
 			children = (
+				F938DDA31A5A723600A1F2D6 /* Roboto-Bold.ttf */,
+				F938DDA41A5A723600A1F2D6 /* Roboto-Light.ttf */,
+				F938DDA51A5A723600A1F2D6 /* Roboto-Medium.ttf */,
 				F938DD7C1A5A5BC800A1F2D6 /* Foodenak */,
 				F938DD961A5A5BC800A1F2D6 /* FoodenakTests */,
 				F938DD7B1A5A5BC800A1F2D6 /* Products */,
@@ -81,6 +105,16 @@
 		F938DD7C1A5A5BC800A1F2D6 /* Foodenak */ = {
 			isa = PBXGroup;
 			children = (
+				F91282271A5FE2C700BBC00C /* FNaddItemViewController.h */,
+				F91282281A5FE2C700BBC00C /* FNaddItemViewController.m */,
+				F91282241A5FB24700BBC00C /* FNmenuViewController.h */,
+				F91282251A5FB24700BBC00C /* FNmenuViewController.m */,
+				F946A4761A5E561B00B4C341 /* FNredeemViewController.h */,
+				F946A4771A5E561B00B4C341 /* FNredeemViewController.m */,
+				F91D62FE1A5D597D000B72AC /* FNcouponsViewController.h */,
+				F91D62FF1A5D597D000B72AC /* FNcouponsViewController.m */,
+				F91D62F81A5D296D000B72AC /* FNaddmenuViewController.h */,
+				F91D62F91A5D296D000B72AC /* FNaddmenuViewController.m */,
 				F938DD811A5A5BC800A1F2D6 /* AppDelegate.h */,
 				F938DD821A5A5BC800A1F2D6 /* AppDelegate.m */,
 				F938DD841A5A5BC800A1F2D6 /* ViewController.h */,
@@ -201,6 +235,9 @@
 			files = (
 				F938DD891A5A5BC800A1F2D6 /* Main.storyboard in Resources */,
 				F938DD8E1A5A5BC800A1F2D6 /* LaunchScreen.xib in Resources */,
+				F938DDA81A5A723600A1F2D6 /* Roboto-Medium.ttf in Resources */,
+				F938DDA71A5A723600A1F2D6 /* Roboto-Light.ttf in Resources */,
+				F938DDA61A5A723600A1F2D6 /* Roboto-Bold.ttf in Resources */,
 				F938DD8B1A5A5BC800A1F2D6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +256,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F946A4781A5E561B00B4C341 /* FNredeemViewController.m in Sources */,
+				F91D63001A5D597D000B72AC /* FNcouponsViewController.m in Sources */,
 				F938DD861A5A5BC800A1F2D6 /* ViewController.m in Sources */,
+				F91D62FA1A5D296D000B72AC /* FNaddmenuViewController.m in Sources */,
 				F938DD831A5A5BC800A1F2D6 /* AppDelegate.m in Sources */,
 				F938DD801A5A5BC800A1F2D6 /* main.m in Sources */,
+				F91282261A5FB24700BBC00C /* FNmenuViewController.m in Sources */,
+				F91282291A5FE2C700BBC00C /* FNaddItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,8 +388,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Foodenak/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -356,8 +400,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Foodenak/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -414,6 +460,7 @@
 				F938DD9F1A5A5BC800A1F2D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F938DDA01A5A5BC800A1F2D6 /* Build configuration list for PBXNativeTarget "FoodenakTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +469,7 @@
 				F938DDA21A5A5BC800A1F2D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
