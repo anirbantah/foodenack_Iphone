@@ -7,6 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "FNeditprofileViewController.h"
+#import "FNfollowersViewController.h"
+#import "FNresturentlistViewController.h"
+#import "FNTradingtagViewController.h"
+#import "FNtagViewController.h"
+#import "FNresturentdetailsViewController.h"
 
 @interface ViewController ()
 
@@ -93,9 +99,15 @@
     followerscount.textAlignment=NSTextAlignmentCenter;
     [followerscount setBackgroundColor:[UIColor clearColor]];
     followerscount.font=[UIFont fontWithName:@"Helvetica" size:15];
-    [userimage1 addSubview:followerscount];
+    [Leftmenu addSubview:followerscount];
+    
+    
+    UITapGestureRecognizer *followerstap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(followers:)];
+    [followerscount addGestureRecognizer:followerstap];
+    followerscount.userInteractionEnabled = YES;
+    
 
-UIImageView *pinline1=[[UIImageView alloc]initWithFrame:CGRectMake(0,userimage1.frame.origin.y+268,Leftmenu.frame.size.width,2)];
+    UIImageView *pinline1=[[UIImageView alloc]initWithFrame:CGRectMake(0,userimage1.frame.origin.y+268,Leftmenu.frame.size.width,2)];
     pinline1.image=[UIImage imageNamed:@"lineimg2"];
     [Leftmenu addSubview:pinline1];
     
@@ -109,7 +121,7 @@ UIImageView *pinline1=[[UIImageView alloc]initWithFrame:CGRectMake(0,userimage1.
     }
     else
     {
-        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,550)];
+        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,650)];
     }
 
     
@@ -162,6 +174,7 @@ UIImageView *pinline1=[[UIImageView alloc]initWithFrame:CGRectMake(0,userimage1.
     [Editprofile setTitle:@"Edit profile" forState:UIControlStateNormal];
     Editprofile.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
     Editprofile.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [Editprofile addTarget:self action:@selector(Editprofile:) forControlEvents:UIControlEventTouchUpInside];
     [leftmenuscroll addSubview:Editprofile];
     
     
@@ -177,7 +190,7 @@ UIImageView *pinline1=[[UIImageView alloc]initWithFrame:CGRectMake(0,userimage1.
     [leftmenuscroll addSubview:Signout];
 
 
-UIImageView *pinline2=[[UIImageView alloc]initWithFrame:CGRectMake(0,signouticon.frame.origin.y+60,Leftmenu.frame.size.width,2)];
+    UIImageView *pinline2=[[UIImageView alloc]initWithFrame:CGRectMake(0,signouticon.frame.origin.y+60,Leftmenu.frame.size.width,2)];
     pinline2.image=[UIImage imageNamed:@"lineimg2"];
     [leftmenuscroll addSubview:pinline2];
     
@@ -219,8 +232,23 @@ UIImageView *pinline2=[[UIImageView alloc]initWithFrame:CGRectMake(0,signouticon
     [leftmenuscroll addSubview:Addnew];
 
     
+   UIButton * resturentlist=[[UIButton alloc]initWithFrame:CGRectMake(30,Addnew.frame.origin.y+40+7,227, 40)];
+    [resturentlist setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [resturentlist setTitle:@"restaurant list" forState:UIControlStateNormal];
+    resturentlist.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    resturentlist.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [resturentlist addTarget:self action:@selector(resturentlist:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:resturentlist];
     
     
+    
+    UIButton * taglist=[[UIButton alloc]initWithFrame:CGRectMake(0,resturentlist.frame.origin.y+40+7,227, 40)];
+    [taglist setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [taglist setTitle:@"Tag" forState:UIControlStateNormal];
+    taglist.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    taglist.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [taglist addTarget:self action:@selector(tag:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:taglist];
 /* -------------------------- Topview Buttons --------------------------- */
     
     
@@ -289,6 +317,8 @@ UIImageView *pinline2=[[UIImageView alloc]initWithFrame:CGRectMake(0,signouticon
     [topview addSubview:messegebutton];
     }
 
+    [editbutton addTarget:self action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
+    
    ////////////////////////////////////////////////////////////////////////
     
     
@@ -1483,28 +1513,28 @@ UIImageView *pinline2=[[UIImageView alloc]initWithFrame:CGRectMake(0,signouticon
     backgroundimage.userInteractionEnabled=YES;
     [sidescroll addSubview:backgroundimage];
         
-  UIImageView *backgroundimage2=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage.frame.size.width+2,0,self.view.frame.size.width,self.view.frame.size.height-210)];
+    UIImageView *backgroundimage2=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage.frame.size.width+2,0,self.view.frame.size.width,self.view.frame.size.height-210)];
     backgroundimage2.image=[UIImage imageNamed:@"backgroundimage"];
     backgroundimage2.userInteractionEnabled=YES;
     [sidescroll addSubview:backgroundimage2];
         
-  UIImageView *backgroundimage3=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage.frame.size.width+backgroundimage2.frame.size.width+4,0,self.view.frame.size.width,self.view.frame.size.height-210)];
+   UIImageView *backgroundimage3=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage.frame.size.width+backgroundimage2.frame.size.width+4,0,self.view.frame.size.width,self.view.frame.size.height-210)];
     backgroundimage3.image=[UIImage imageNamed:@"backgroundimage"];
     backgroundimage3.userInteractionEnabled=YES;
     [sidescroll addSubview:backgroundimage3];
         
-  UIImageView *backgroundimage4=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage3.frame.origin.x+376,0,self.view.frame.size.width,self.view.frame.size.height-210)];
+   UIImageView *backgroundimage4=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage3.frame.origin.x+376,0,self.view.frame.size.width,self.view.frame.size.height-210)];
         backgroundimage4.image=[UIImage imageNamed:@"backgroundimage"];
         backgroundimage4.userInteractionEnabled=YES;
         [sidescroll addSubview:backgroundimage4];
         
-  UIImageView *backgroundimage5=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage4.frame.origin.x+376,0,self.view.frame.size.width,self.view.frame.size.height-210)];
+   UIImageView *backgroundimage5=[[UIImageView alloc]initWithFrame:CGRectMake(backgroundimage4.frame.origin.x+376,0,self.view.frame.size.width,self.view.frame.size.height-210)];
         backgroundimage5.image=[UIImage imageNamed:@"backgroundimage"];
         backgroundimage5.userInteractionEnabled=YES;
         [sidescroll addSubview:backgroundimage5];
 
         
-[sidescroll setContentSize:CGSizeMake(backgroundimage4.frame.origin.x+756, self.view.frame.origin.y)];
+   [sidescroll setContentSize:CGSizeMake(backgroundimage4.frame.origin.x+756, self.view.frame.origin.y)];
     
     header=[[UILabel alloc]initWithFrame:CGRectMake(0, 25, backgroundimage.frame.size.width-140,60)];
     header.text=@"FOODENAK";
@@ -1689,12 +1719,12 @@ UIImageView *pinline2=[[UIImageView alloc]initWithFrame:CGRectMake(0,signouticon
         // [alltime addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
         [popularbackground addSubview:alltime];
 
-    UIImageView *pinline1=[[UIImageView alloc]initWithFrame:CGRectMake(6,120,popularbackground.frame.size.width-12,2)];
+        UIImageView *pinline1=[[UIImageView alloc]initWithFrame:CGRectMake(6,120,popularbackground.frame.size.width-12,2)];
         pinline1.image=[UIImage imageNamed:@"lineimg2"];
         [popularbackground addSubview:pinline1];
         
         blackline=[[UIView alloc]initWithFrame:CGRectMake(10,120,100,2)];
-    blackline.backgroundColor=[UIColor blackColor];
+        blackline.backgroundColor=[UIColor blackColor];
         [popularbackground addSubview:blackline];
         
         UIImageView *logobackground=[[UIImageView alloc]initWithFrame:CGRectMake(6,0,481-160,297-90)];
@@ -3270,6 +3300,57 @@ UIImageView *atmosstar1=[[UIImageView alloc]initWithFrame:CGRectMake(150,Present
     [textField resignFirstResponder];
     return YES;
 }
+
+////edit button function........
+
+-(void)Editprofile:(UIButton *)sender{
+    
+    FNeditprofileViewController *view = [[FNeditprofileViewController alloc]init];
+    [self.navigationController pushViewController:view animated:YES];
+    
+}
+
+//followers list...
+
+-(void)followers:(UITapGestureRecognizer *)sender{
+    
+    FNfollowersViewController *follow = [[FNfollowersViewController alloc]init];
+    [self.navigationController pushViewController:follow animated:NO];
+    
+}
+
+-(void)edit:(UIButton *)sender{
+    
+//    FNresturentlistViewController *list = [[FNresturentlistViewController alloc]init];
+//    [self.navigationController pushViewController:list animated:NO];
+    
+//    FNTradingtagViewController *list = [[FNTradingtagViewController alloc]init];
+//    [self.navigationController pushViewController:list animated:NO];
+    
+//    FNtagViewController *list = [[FNtagViewController alloc]init];
+//    [self.navigationController pushViewController:list animated:NO];
+    
+    FNresturentdetailsViewController*list = [[FNresturentdetailsViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+
+    
+}
+
+-(void)resturentlist:(UIButton *)sender{
+    FNresturentlistViewController *list = [[FNresturentlistViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+
+    
+}
+
+-(void)tag:(UIButton *)sender{
+    
+    FNTradingtagViewController *list = [[FNTradingtagViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
