@@ -13,6 +13,12 @@
 #import "FNTradingtagViewController.h"
 #import "FNtagViewController.h"
 #import "FNresturentdetailsViewController.h"
+#import "FNusercardsViewController.h"
+#import "FNtradingpostViewController.h"
+#import "FNcarddetailsViewController.h"
+#import "FNFilterViewController.h"
+#import "FNNewRestaurantViewController.h"
+#import "FNReviewViewController.h"
 
 @interface ViewController ()
 
@@ -117,11 +123,11 @@
     leftmenuscroll.backgroundColor=[UIColor clearColor];
     if ([UIScreen mainScreen].bounds.size.height==568.0f)
     {
-        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,666)];
+        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,1000)];
     }
     else
     {
-        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,650)];
+        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,1000)];
     }
 
     
@@ -249,6 +255,66 @@
     taglist.titleLabel.textAlignment=NSTextAlignmentLeft;
     [taglist addTarget:self action:@selector(tag:) forControlEvents:UIControlEventTouchUpInside];
     [leftmenuscroll addSubview:taglist];
+    
+    
+    UIButton * newresturnt=[[UIButton alloc]initWithFrame:CGRectMake(0,taglist.frame.origin.y+40+7,227, 40)];
+    [newresturnt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [newresturnt setTitle:@"New Restuarent" forState:UIControlStateNormal];
+    newresturnt.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    newresturnt.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [newresturnt addTarget:self action:@selector(newresturent:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:newresturnt];
+    
+    
+    UIButton * resturentdetails=[[UIButton alloc]initWithFrame:CGRectMake(0,newresturnt.frame.origin.y+40+7,227, 40)];
+    [resturentdetails setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [resturentdetails setTitle:@"Restuarent Details" forState:UIControlStateNormal];
+    resturentdetails.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    resturentdetails.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [resturentdetails addTarget:self action:@selector(resturentdetails:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:resturentdetails];
+    
+    UIButton * review=[[UIButton alloc]initWithFrame:CGRectMake(0,resturentdetails.frame.origin.y+40+7,227, 40)];
+    [review setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [review setTitle:@"Review" forState:UIControlStateNormal];
+    review.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    review.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [review addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:review];
+    
+    
+    UIButton * tradingpost=[[UIButton alloc]initWithFrame:CGRectMake(0,review.frame.origin.y+40+7,227, 40)];
+    [tradingpost setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [tradingpost setTitle:@"Trading Post" forState:UIControlStateNormal];
+    tradingpost.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    tradingpost.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [tradingpost addTarget:self action:@selector(tradingpost:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:tradingpost];
+    
+    UIButton * usercard=[[UIButton alloc]initWithFrame:CGRectMake(0,tradingpost.frame.origin.y+40+7,227, 40)];
+    [usercard setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [usercard setTitle:@"User Card" forState:UIControlStateNormal];
+    usercard.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    usercard.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [usercard addTarget:self action:@selector(usercard:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:usercard];
+    
+    
+    UIButton * filter=[[UIButton alloc]initWithFrame:CGRectMake(0,usercard.frame.origin.y+40+7,227, 40)];
+    [filter setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [filter setTitle:@"Filter" forState:UIControlStateNormal];
+    filter.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    filter.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [filter addTarget:self action:@selector(filter:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:filter];
+    
+    UIButton * carddetails=[[UIButton alloc]initWithFrame:CGRectMake(0,filter.frame.origin.y+40+7,227, 40)];
+    [carddetails setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [carddetails setTitle:@"Card Details" forState:UIControlStateNormal];
+    carddetails.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    carddetails.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [carddetails addTarget:self action:@selector(carddetails:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:carddetails];
 /* -------------------------- Topview Buttons --------------------------- */
     
     
@@ -3327,14 +3393,62 @@ UIImageView *atmosstar1=[[UIImageView alloc]initWithFrame:CGRectMake(150,Present
 //    FNTradingtagViewController *list = [[FNTradingtagViewController alloc]init];
 //    [self.navigationController pushViewController:list animated:NO];
     
-//    FNtagViewController *list = [[FNtagViewController alloc]init];
+//    FNusercardsViewController *list = [[FNusercardsViewController alloc]init];
 //    [self.navigationController pushViewController:list animated:NO];
+  
+
     
-    FNresturentdetailsViewController*list = [[FNresturentdetailsViewController alloc]init];
+    FNReviewViewController *list = [[FNReviewViewController alloc]init];
     [self.navigationController pushViewController:list animated:NO];
 
     
 }
+
+-(void)newresturent:(UIButton *)sender{
+    
+    FNNewRestaurantViewController *list = [[FNNewRestaurantViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
+
+-(void)resturentdetails:(UIButton *)sender{
+    
+    FNresturentdetailsViewController *list = [[FNresturentdetailsViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
+-(void)review:(UIButton *)sender{
+    
+    FNReviewViewController *list = [[FNReviewViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
+
+-(void)tradingpost:(UIButton *)sender{
+    
+    FNtradingpostViewController *list = [[FNtradingpostViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
+
+-(void)usercard:(UIButton *)sender{
+    
+    FNusercardsViewController *list = [[FNusercardsViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
+-(void)filter:(UIButton *)sender{
+    
+    FNFilterViewController *list = [[FNFilterViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
+
+-(void)carddetails:(UIButton *)sender{
+    
+    FNcarddetailsViewController *list = [[FNcarddetailsViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
+
+
+
+
+
+
 
 -(void)resturentlist:(UIButton *)sender{
     FNresturentlistViewController *list = [[FNresturentlistViewController alloc]init];
