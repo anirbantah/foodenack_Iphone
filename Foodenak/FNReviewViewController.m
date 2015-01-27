@@ -7,6 +7,7 @@
 //
 
 #import "FNReviewViewController.h"
+#import "ViewController.h"
 #define RGBCOLOR(x,y,z,f) [UIColor colorWithRed:(x/255.0f) green:(y/255.0f) blue:(z/255.0f) alpha:f]
 
 #define  MainScreenHeight [[UIScreen mainScreen]bounds].size.height
@@ -15,7 +16,13 @@
 #define HALVELTICA(x)  [UIFont fontWithName:@"Helvetica Bold" size:x]
 
 #define HALVELTICA_LIGHT(x)  [UIFont fontWithName:@"Helvetica Light" size:x]
-@interface FNReviewViewController ()<UIScrollViewDelegate>
+@interface FNReviewViewController ()<UIScrollViewDelegate,UITextViewDelegate>{
+    
+    UILabel *Review;
+    UITextView *ReviewTextview;
+    UIView *  TopStartContainerView1;
+    UIView *AtmosphereStartContainerView,*PresentationStartContainerView,*ServiceStartContainerView,* TestStartContainerView;
+}
 
 @end
 
@@ -41,7 +48,7 @@
     [BackButton setImage:backImage forState:UIControlStateNormal];
     [BackButton setImage:backImage forState:UIControlStateHighlighted];
     [BackButton setImage:backImage forState:UIControlStateSelected];
-   // [BackButton addTarget:self action:@selector(Backbutton:) forControlEvents:UIControlEventTouchUpInside];
+    [BackButton addTarget:self action:@selector(Backbutton:) forControlEvents:UIControlEventTouchUpInside];
     [topview addSubview:BackButton];
     
     
@@ -71,11 +78,11 @@
     [MainView addSubview:MainScroll];
     
     
-    MainScroll.contentSize = CGSizeMake(0, 3300);
+    MainScroll.contentSize = CGSizeMake(0, 900);
     
     
     
-    UIView *MainContainerView=[[UIView alloc]initWithFrame:CGRectMake(20, 0, MainScroll.frame.size.width-40, MainScroll.frame.size.height+100)];
+    UIView *MainContainerView=[[UIView alloc]initWithFrame:CGRectMake(20, 0, MainScroll.frame.size.width-40, MainScroll.frame.size.height+350)];
     [MainScroll addSubview:MainContainerView];
     MainContainerView.layer.cornerRadius=4.0;
     [MainContainerView setBackgroundColor:[UIColor whiteColor]];
@@ -105,6 +112,18 @@
     [CostLbl setText:@"KFC"];
     [UpCardView addSubview:CostLbl];
     
+    if ([[UIScreen mainScreen]bounds].size.width == 320)
+    {
+        UILabel *DolLbl=[[UILabel alloc]initWithFrame:CGRectMake(190, KfcImgView.frame.origin.y-2.5, 80, 20)];
+        [DolLbl setBackgroundColor:[UIColor clearColor]];
+        [DolLbl setFont:HALVELTICA(14)];
+        [DolLbl setTextColor:[UIColor lightGrayColor]];
+        [DolLbl setTextAlignment:NSTextAlignmentLeft];
+        [DolLbl setText:@"90.0$"];
+        [UpCardView addSubview:DolLbl];
+    }
+    else
+    {
     UILabel *DolLbl=[[UILabel alloc]initWithFrame:CGRectMake(220, KfcImgView.frame.origin.y-2.5, 80, 20)];
     [DolLbl setBackgroundColor:[UIColor clearColor]];
     [DolLbl setFont:HALVELTICA(14)];
@@ -112,7 +131,7 @@
     [DolLbl setTextAlignment:NSTextAlignmentLeft];
     [DolLbl setText:@"90.0$"];
     [UpCardView addSubview:DolLbl];
-    
+    }
     int topRate=4;
     UIView *  TopStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(110 ,65, 200, 35)];
     
@@ -162,7 +181,7 @@
     [TopMapLabel setFont:HALVELTICA(12)];
     [TopMapLabel setTextColor:RGBCOLOR(90, 90, 90, 1)];
     [TopMapLabel setTextAlignment:NSTextAlignmentLeft];
-    [TopMapLabel setText:@"Lorem ipsum dolar sit amet"];
+    [TopMapLabel setText:@"Lorem ipsum dolar"];
     [UpCardView addSubview:TopMapLabel];
 
     
@@ -203,11 +222,22 @@
     
     
     int CardstopRate=4;
-    UIView *  TopStartContainerView1=[[UIView alloc]initWithFrame:CGRectMake(160 ,0, 150, 35)];
     
-    TopStartContainerView1.backgroundColor=[UIColor clearColor];
-    
-    [TopRatingSubView1 addSubview:TopStartContainerView1];
+    if ([[UIScreen mainScreen]bounds].size.width == 320)
+    {
+      TopStartContainerView1=[[UIView alloc]initWithFrame:CGRectMake(120 ,0, 150, 35)];
+        TopStartContainerView1.backgroundColor=[UIColor clearColor];
+        
+        [TopRatingSubView1 addSubview:TopStartContainerView1];
+    }
+    else
+    {
+    TopStartContainerView1=[[UIView alloc]initWithFrame:CGRectMake(160 ,0, 150, 35)];
+        TopStartContainerView1.backgroundColor=[UIColor clearColor];
+        
+        [TopRatingSubView1 addSubview:TopStartContainerView1];
+    }
+ 
     
     CGRect PreFrame22=CGRectMake(0, 10, 33/2, 30/2);
     
@@ -267,11 +297,24 @@
     
     
     // STARS START
-    UIView * TestStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
     
-    TestStartContainerView.backgroundColor=[UIColor clearColor];
-    
-    [TestRatingSubView addSubview:TestStartContainerView];
+    if ([[UIScreen mainScreen]bounds].size.width == 320) {
+        
+        TestStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(170 ,5,103, 26)];
+        
+        TestStartContainerView.backgroundColor=[UIColor clearColor];
+        
+        [TestRatingSubView addSubview:TestStartContainerView];
+    }
+    else
+    {
+        TestStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
+        
+        TestStartContainerView.backgroundColor=[UIColor clearColor];
+        
+        [TestRatingSubView addSubview:TestStartContainerView];
+    }
+   
     
     CGRect PreFrame3=CGRectMake(0, 2, 33/2, 30/2);
     
@@ -336,12 +379,23 @@
     
     
     // STARS START
-    UIView *ServiceStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
+    
+    if ([[UIScreen mainScreen]bounds].size.width == 320) {
+        ServiceStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(170 ,5,103, 26)];
+        
+        ServiceStartContainerView.backgroundColor=[UIColor clearColor];
+        
+        [ServiceRatingSubView addSubview:ServiceStartContainerView];
+    }
+    else
+    {
+    ServiceStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
     
     ServiceStartContainerView.backgroundColor=[UIColor clearColor];
     
     [ServiceRatingSubView addSubview:ServiceStartContainerView];
-    
+}
+
     CGRect PreFrame4=CGRectMake(0, 2, 33/2, 30/2);
     
     
@@ -405,12 +459,22 @@
     
     
     // STARS START
-    UIView *PresentationStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
+    
+     if ([[UIScreen mainScreen]bounds].size.width == 320) {
+         PresentationStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(170 ,5,103, 26)];
+         
+         PresentationStartContainerView.backgroundColor=[UIColor clearColor];
+         
+         [PresentationRatingSubView addSubview:PresentationStartContainerView];
+     }
+     else{
+    
+    PresentationStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
     
     PresentationStartContainerView.backgroundColor=[UIColor clearColor];
     
     [PresentationRatingSubView addSubview:PresentationStartContainerView];
-    
+     }
     CGRect PreFrame5=CGRectMake(0, 2, 33/2, 30/2);
     
     
@@ -474,11 +538,25 @@
     
     
     // STARS START
-    UIView *AtmosphereStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
     
-    AtmosphereStartContainerView.backgroundColor=[UIColor clearColor];
-    
-    [AtmosphereRatingSubView addSubview:AtmosphereStartContainerView];
+     if ([[UIScreen mainScreen]bounds].size.width == 320)
+     {
+         AtmosphereStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(170 ,5,103, 26)];
+         
+         AtmosphereStartContainerView.backgroundColor=[UIColor clearColor];
+         
+         [AtmosphereRatingSubView addSubview:AtmosphereStartContainerView];
+
+     }
+    else
+    {
+       AtmosphereStartContainerView=[[UIView alloc]initWithFrame:CGRectMake(210 ,5,103, 26)];
+        
+        AtmosphereStartContainerView.backgroundColor=[UIColor clearColor];
+        
+        [AtmosphereRatingSubView addSubview:AtmosphereStartContainerView];
+   
+    }
     
     CGRect PreFrame6=CGRectMake(0, 2, 33/2, 30/2);
     
@@ -537,33 +615,68 @@
     [MidView setBackgroundColor:RGBCOLOR(245, 245, 245, 1)];
     MidView.layer.cornerRadius=4.0;
     
+    if ([[UIScreen mainScreen]bounds].size.width == 320) {
+        
+        UIImageView *LView=[[UIImageView alloc]initWithFrame:CGRectMake(6, 22, 213/2, 50/2)];
+        [LView setImage:[UIImage imageNamed:@"Chicken"]];
+        [MidView addSubview:LView];
+        
+        UILabel *CMenu=[[UILabel alloc] initWithFrame:CGRectMake(0, 1,LView.frame.size.width, 23)];
+        [CMenu setText:@"Chicken"];
+        [CMenu setTextAlignment:NSTextAlignmentCenter];
+        [CMenu setTextColor:RGBCOLOR(100, 100, 100, 1)];
+        [CMenu setFont:HALVELTICA_LIGHT(14)];
+        [LView addSubview:CMenu];
+        
+        
+        UILabel *CMenu2=[[UILabel alloc] initWithFrame:CGRectMake(0, 1,LView.frame.size.width, 23)];
+        [CMenu2 setText:@"Chicken"];
+        [CMenu2 setTextAlignment:NSTextAlignmentCenter];
+        [CMenu2 setTextColor:RGBCOLOR(100, 100, 100, 1)];
+        [CMenu2 setFont:HALVELTICA_LIGHT(14)];
+        [LView addSubview:CMenu2];
+        
+        
+        
+        UIImageView *RView=[[UIImageView alloc]initWithFrame:CGRectMake(LView.frame.size.width+LView.frame.origin.x+12, 22, 213/2, 50/2)];
+        [RView setImage:[UIImage imageNamed:@"Chicken"]];
+        [MidView addSubview:RView];
+        
+        [RView addSubview:CMenu2];
+
+    }
+    else
+    {
+        UIImageView *LView=[[UIImageView alloc]initWithFrame:CGRectMake(26, 22, 213/2, 50/2)];
+        [LView setImage:[UIImage imageNamed:@"Chicken"]];
+        [MidView addSubview:LView];
+        
+        UILabel *CMenu=[[UILabel alloc] initWithFrame:CGRectMake(0, 1,LView.frame.size.width, 23)];
+        [CMenu setText:@"Chicken"];
+        [CMenu setTextAlignment:NSTextAlignmentCenter];
+        [CMenu setTextColor:RGBCOLOR(100, 100, 100, 1)];
+        [CMenu setFont:HALVELTICA_LIGHT(14)];
+        [LView addSubview:CMenu];
+        
+        
+        UILabel *CMenu2=[[UILabel alloc] initWithFrame:CGRectMake(0, 1,LView.frame.size.width, 23)];
+        [CMenu2 setText:@"Chicken"];
+        [CMenu2 setTextAlignment:NSTextAlignmentCenter];
+        [CMenu2 setTextColor:RGBCOLOR(100, 100, 100, 1)];
+        [CMenu2 setFont:HALVELTICA_LIGHT(14)];
+        [LView addSubview:CMenu2];
+        
+        
+        
+        UIImageView *RView=[[UIImageView alloc]initWithFrame:CGRectMake(LView.frame.size.width+LView.frame.origin.x+30, 22, 213/2, 50/2)];
+        [RView setImage:[UIImage imageNamed:@"Chicken"]];
+        [MidView addSubview:RView];
+        
+        [RView addSubview:CMenu2];
+
+    }
     
-    UIImageView *LView=[[UIImageView alloc]initWithFrame:CGRectMake(26, 22, 213/2, 50/2)];
-    [LView setImage:[UIImage imageNamed:@"Chicken"]];
-    [MidView addSubview:LView];
     
-    UILabel *CMenu=[[UILabel alloc] initWithFrame:CGRectMake(0, 1,LView.frame.size.width, 23)];
-    [CMenu setText:@"Chicken"];
-    [CMenu setTextAlignment:NSTextAlignmentCenter];
-    [CMenu setTextColor:RGBCOLOR(100, 100, 100, 1)];
-    [CMenu setFont:HALVELTICA_LIGHT(14)];
-    [LView addSubview:CMenu];
-    
-    
-    UILabel *CMenu2=[[UILabel alloc] initWithFrame:CGRectMake(0, 1,LView.frame.size.width, 23)];
-    [CMenu2 setText:@"Chicken"];
-    [CMenu2 setTextAlignment:NSTextAlignmentCenter];
-    [CMenu2 setTextColor:RGBCOLOR(100, 100, 100, 1)];
-    [CMenu2 setFont:HALVELTICA_LIGHT(14)];
-    [LView addSubview:CMenu2];
-    
-    
-    
-    UIImageView *RView=[[UIImageView alloc]initWithFrame:CGRectMake(LView.frame.size.width+LView.frame.origin.x+30, 22, 213/2, 50/2)];
-    [RView setImage:[UIImage imageNamed:@"Chicken"]];
-    [MidView addSubview:RView];
-    
-    [RView addSubview:CMenu2];
     
     
     
@@ -571,11 +684,40 @@
     [Hs14 setBackgroundColor:RGBCOLOR(230, 230, 230, 1)];
     [MainContainerView addSubview:Hs14];
     
+    //review textview.........
+    
+    
+    Review=[[UILabel alloc] initWithFrame:CGRectMake(20, Hs14.frame.origin.y+10,150, 23)];
+    [Review setText:@"Review"];
+    [Review setTextColor:RGBCOLOR(100, 100, 100, 1)];
+    [Review setFont:HALVELTICA_LIGHT(14)];
+    [MainContainerView addSubview:Review];
+    
+    
+    
+    ReviewTextview = [[UITextView alloc]initWithFrame:CGRectMake(20, Review.frame.origin.y+30, MainContainerView.frame.size.width-40, 110)];
+    ReviewTextview.font = [UIFont systemFontOfSize:16.0f];
+    ReviewTextview.backgroundColor = [UIColor clearColor];
+    ReviewTextview.textColor = [UIColor blackColor];
+    ReviewTextview.scrollEnabled = YES;
+    ReviewTextview.editable = YES;
+    ReviewTextview.layer.cornerRadius = 3.0f;
+    ReviewTextview.layer.borderWidth = 1.5f;
+    ReviewTextview.layer.borderColor =[RGBCOLOR(230, 230, 230, 1)CGColor];
+    ReviewTextview.delegate = self;
+    ReviewTextview.textAlignment = NSTextAlignmentLeft;
+    [MainContainerView addSubview:ReviewTextview];
+    
+    
+    
+    UIView *Hs16=[[UIView alloc]initWithFrame:CGRectMake(0, ReviewTextview.frame.origin.y+ReviewTextview.frame.size.height+10, MainContainerView.frame.size.width, 1)];
+    [Hs16 setBackgroundColor:RGBCOLOR(230, 230, 230, 1)];
+    [MainContainerView addSubview:Hs16];
     
     //////  tag>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     
-    UIView *CardTagContainerView=[[UIView alloc]initWithFrame:CGRectMake(0, Hs14.frame.origin.y+Hs14.frame.size.height+20, MainContainerView.frame.size.width, 90)];
+    UIView *CardTagContainerView=[[UIView alloc]initWithFrame:CGRectMake(0, Hs16.frame.origin.y+Hs16.frame.size.height+20, MainContainerView.frame.size.width, 90)];
     [MainContainerView addSubview:CardTagContainerView];
     
     
@@ -649,6 +791,48 @@
     [Hs15 setBackgroundColor:RGBCOLOR(230, 230, 230, 1)];
     [MainContainerView addSubview:Hs15];
     
+    if ([[UIScreen mainScreen]bounds].size.width == 320) {
+        
+        UILabel *Share=[[UILabel alloc]initWithFrame:CGRectMake(18, Hs15.frame.origin.y+10, 90, 20)];
+        
+        [Share setTextColor:RGBCOLOR(190, 190, 160, 1)];
+        [Share setText:@"SHARE TO:"];
+        Share.backgroundColor = [UIColor clearColor];
+        [Share setTextAlignment:NSTextAlignmentCenter];
+        [Share setFont:HALVELTICA(14)];
+        [MainContainerView addSubview:Share];
+        
+        UIImageView *twm=[[UIImageView alloc]initWithFrame:CGRectMake(Share.frame.origin.x+Share.frame.size.width+2,Share.frame.origin.y-2,20,20)];
+        twm.image=[UIImage imageNamed:@"Twitter"];
+        twm.userInteractionEnabled=YES;
+        [MainContainerView addSubview:twm];
+        
+        
+        UILabel *Share1=[[UILabel alloc]initWithFrame:CGRectMake(twm.frame.origin.x+twm.frame.size.width+8, Hs15.frame.origin.y+10, 50, 20)];
+        
+        [Share1 setTextColor:RGBCOLOR(190, 190, 190, 1)];
+        [Share1 setText:@"Twitter"];
+        [Share1 setBackgroundColor:[UIColor clearColor]];
+        [Share1 setTextAlignment:NSTextAlignmentLeft];
+        [Share1 setFont:HALVELTICA(14)];
+        [MainContainerView addSubview:Share1];
+        
+        UIImageView *twm1=[[UIImageView alloc]initWithFrame:CGRectMake(Share1.frame.origin.x+Share1.frame.size.width+2,Share1.frame.origin.y-2,20,20)];
+        twm1.image=[UIImage imageNamed:@"Facebook"];
+        twm1.userInteractionEnabled=YES;
+        [MainContainerView addSubview:twm1];
+        
+        
+        UILabel *Share2=[[UILabel alloc]initWithFrame:CGRectMake(twm1.frame.origin.x+twm1.frame.size.width+4, Hs15.frame.origin.y+10, 80, 20)];
+        
+        [Share2 setTextColor:RGBCOLOR(190, 190, 190, 1)];
+        [Share2 setText:@"Facebook"];
+        [Share2 setTextAlignment:NSTextAlignmentLeft];
+        [Share2 setFont:HALVELTICA(14)];
+        [MainContainerView addSubview:Share2];
+    }
+    else
+    {
     UILabel *Share=[[UILabel alloc]initWithFrame:CGRectMake(18, Hs15.frame.origin.y+10, 90, 20)];
     
     [Share setTextColor:RGBCOLOR(190, 190, 190, 1)];
@@ -685,7 +869,7 @@
     [Share2 setTextAlignment:NSTextAlignmentLeft];
     [Share2 setFont:HALVELTICA(16)];
     [MainContainerView addSubview:Share2];
-    
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -694,6 +878,42 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)Backbutton:(UIButton *)sender{
+    
+    ViewController *list = [[ViewController alloc]init];
+    [self.navigationController pushViewController:list animated:YES];
+}
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    ReviewTextview.textColor = [UIColor blackColor];
+    return YES;
+}
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    
+    if ([ReviewTextview.text isEqualToString:@""]) {
+
+    }
+    else{
+        
+    }
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    
+    
+    if([text isEqualToString:@"\n"]) {
+        
+        [ReviewTextview resignFirstResponder];
+        
+        
+        return NO;
+    }
+    
+    return YES;
+    
+}
 /*
 #pragma mark - Navigation
 

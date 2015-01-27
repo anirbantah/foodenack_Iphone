@@ -7,6 +7,9 @@
 //
 
 #import "FNresturentdetailsViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+#import "ViewController.h"
 #define RGBCOLOR(x,y,z,f) [UIColor colorWithRed:(x/255.0f) green:(y/255.0f) blue:(z/255.0f) alpha:f]
 
 #define  MainScreenHeight [[UIScreen mainScreen]bounds].size.height
@@ -15,11 +18,11 @@
 #define HALVELTICA(x)  [UIFont fontWithName:@"Helvetica Bold" size:x]
 
 #define HALVELTICA_LIGHT(x)  [UIFont fontWithName:@"Helvetica Light" size:x]
-@interface FNresturentdetailsViewController ()<UIScrollViewDelegate,UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface FNresturentdetailsViewController ()<UIScrollViewDelegate,UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate>
 {
     
     float TopViewHeight;
-    
+    MKMapView *LocationMap;
     UIScrollView *MainScroll;
     UIImageView *topview;
     UIView *MainView;
@@ -119,32 +122,66 @@
     //[menutap addTarget:self action:@selector(LeftTogglemenu:) forControlEvents:UIControlEventTouchUpInside];
     //[topview addSubview:menutap];
     
-    UIImage *EditIconImg=[UIImage imageNamed:@"editicon"];
-    editbutton=[[UIButton alloc]initWithFrame:CGRectMake(260,56,EditIconImg.size.width/2,EditIconImg.size.height/2)];
-    [editbutton setBackgroundImage:EditIconImg forState:UIControlStateNormal];
-     [editbutton setBackgroundImage:EditIconImg forState:UIControlStateSelected];
-     [editbutton setBackgroundImage:EditIconImg forState:UIControlStateHighlighted];
-    [topview addSubview:editbutton];
-    
-    
-    UIImage *CameraImg=[UIImage imageNamed:@"cameraicon"];
-    camerabutton=[[UIButton alloc]initWithFrame:CGRectMake(editbutton.frame.origin.x+editbutton.frame.size.width+28,56,CameraImg.size.width/2,CameraImg.size.height/2)];
-    
-    [camerabutton setBackgroundImage:CameraImg forState:UIControlStateNormal];
-    [camerabutton setBackgroundImage:CameraImg forState:UIControlStateSelected];
-    [camerabutton setBackgroundImage:CameraImg forState:UIControlStateHighlighted];
-    
-    [topview addSubview:camerabutton];
-    
-    UIImage *MessageImg=[UIImage imageNamed:@"messegeicon"];
-    
-    messegebutton=[[UIButton alloc]initWithFrame:CGRectMake(camerabutton.frame.origin.x+camerabutton.frame.size.width+28,56,MessageImg.size.width/2,MessageImg.size.height/2)];
-    
-    [messegebutton setBackgroundImage:MessageImg forState:UIControlStateNormal];
-    [messegebutton setBackgroundImage:MessageImg forState:UIControlStateSelected];
-    [messegebutton setBackgroundImage:MessageImg forState:UIControlStateHighlighted];
-    
-    [topview addSubview:messegebutton];
+    if ([[UIScreen mainScreen]bounds].size.width == 320) {
+        
+        UIImage *EditIconImg=[UIImage imageNamed:@"editicon"];
+        editbutton=[[UIButton alloc]initWithFrame:CGRectMake(200,56,EditIconImg.size.width/2,EditIconImg.size.height/2)];
+        [editbutton setBackgroundImage:EditIconImg forState:UIControlStateNormal];
+        [editbutton setBackgroundImage:EditIconImg forState:UIControlStateSelected];
+        [editbutton setBackgroundImage:EditIconImg forState:UIControlStateHighlighted];
+        //    [editbutton addTarget:self action:@selector(editbutton:) forControlEvents:UIControlEventTouchUpInside];
+        [topview addSubview:editbutton];
+        
+        
+        UIImage *CameraImg=[UIImage imageNamed:@"cameraicon"];
+        camerabutton=[[UIButton alloc]initWithFrame:CGRectMake(editbutton.frame.origin.x+editbutton.frame.size.width+28,56,CameraImg.size.width/2,CameraImg.size.height/2)];
+        [camerabutton setBackgroundImage:CameraImg forState:UIControlStateNormal];
+        [camerabutton setBackgroundImage:CameraImg forState:UIControlStateSelected];
+        [camerabutton setBackgroundImage:CameraImg forState:UIControlStateHighlighted];
+        //[camerabutton addTarget:self action:@selector(camerabutton:) forControlEvents:UIControlEventTouchUpInside];
+        [topview addSubview:camerabutton];
+        
+        UIImage *MessageImg=[UIImage imageNamed:@"messegeicon"];
+        
+        messegebutton=[[UIButton alloc]initWithFrame:CGRectMake(camerabutton.frame.origin.x+camerabutton.frame.size.width+28,56,MessageImg.size.width/2,MessageImg.size.height/2)];
+        
+        [messegebutton setBackgroundImage:MessageImg forState:UIControlStateNormal];
+        [messegebutton setBackgroundImage:MessageImg forState:UIControlStateSelected];
+        [messegebutton setBackgroundImage:MessageImg forState:UIControlStateHighlighted];
+        //    [messegebutton addTarget:self action:@selector(messagebutton:) forControlEvents:UIControlEventTouchUpInside];
+        [topview addSubview:messegebutton];
+
+    }
+    else
+    {
+        UIImage *EditIconImg=[UIImage imageNamed:@"editicon"];
+        editbutton=[[UIButton alloc]initWithFrame:CGRectMake(260,56,EditIconImg.size.width/2,EditIconImg.size.height/2)];
+        [editbutton setBackgroundImage:EditIconImg forState:UIControlStateNormal];
+        [editbutton setBackgroundImage:EditIconImg forState:UIControlStateSelected];
+        [editbutton setBackgroundImage:EditIconImg forState:UIControlStateHighlighted];
+        //    [editbutton addTarget:self action:@selector(editbutton:) forControlEvents:UIControlEventTouchUpInside];
+        [topview addSubview:editbutton];
+        
+        
+        UIImage *CameraImg=[UIImage imageNamed:@"cameraicon"];
+        camerabutton=[[UIButton alloc]initWithFrame:CGRectMake(editbutton.frame.origin.x+editbutton.frame.size.width+28,56,CameraImg.size.width/2,CameraImg.size.height/2)];
+        [camerabutton setBackgroundImage:CameraImg forState:UIControlStateNormal];
+        [camerabutton setBackgroundImage:CameraImg forState:UIControlStateSelected];
+        [camerabutton setBackgroundImage:CameraImg forState:UIControlStateHighlighted];
+        //[camerabutton addTarget:self action:@selector(camerabutton:) forControlEvents:UIControlEventTouchUpInside];
+        [topview addSubview:camerabutton];
+        
+        UIImage *MessageImg=[UIImage imageNamed:@"messegeicon"];
+        
+        messegebutton=[[UIButton alloc]initWithFrame:CGRectMake(camerabutton.frame.origin.x+camerabutton.frame.size.width+28,56,MessageImg.size.width/2,MessageImg.size.height/2)];
+        
+        [messegebutton setBackgroundImage:MessageImg forState:UIControlStateNormal];
+        [messegebutton setBackgroundImage:MessageImg forState:UIControlStateSelected];
+        [messegebutton setBackgroundImage:MessageImg forState:UIControlStateHighlighted];
+        //    [messegebutton addTarget:self action:@selector(messagebutton:) forControlEvents:UIControlEventTouchUpInside];
+        [topview addSubview:messegebutton];
+
+    }
     
     UIView *HeaderNarrowBar=[[UIView alloc]initWithFrame:CGRectMake(0, topview.frame.origin.y+topview.frame.size.height, MainScreenWidth, 2)];
     [HeaderNarrowBar setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"shadowbar-1"]]];
@@ -160,7 +197,7 @@
     MainScroll.showsHorizontalScrollIndicator=NO;
     [MainView addSubview:MainScroll];
     
-    MainScroll.contentSize = CGSizeMake(0, 3600);
+    MainScroll.contentSize = CGSizeMake(0, 3200);
     
     
     //start of top container view
@@ -190,7 +227,14 @@
     
     
     //START OF DOLAR LABEL
-    DolarLabel=[[UILabel alloc]initWithFrame:CGRectMake(KFCLabel.frame.origin.x+KFCLabel.frame.size.width+180, 10, 100, 30)];
+    if ([[UIScreen mainScreen]bounds].size.width == 320) {
+        DolarLabel=[[UILabel alloc]initWithFrame:CGRectMake(KFCLabel.frame.origin.x+KFCLabel.frame.size.width+150, 10, 100, 30)];
+    }
+    else
+    {
+        DolarLabel=[[UILabel alloc]initWithFrame:CGRectMake(KFCLabel.frame.origin.x+KFCLabel.frame.size.width+180, 10, 100, 30)];
+    }
+    
     [DolarLabel setFont:HALVELTICA(17)];
     
     [DolarLabel setTextColor:[UIColor whiteColor]];
@@ -233,7 +277,7 @@
         [StarBtn setBackgroundImage:[UIImage imageNamed:ImageName] forState:UIControlStateSelected];
         
         [StarBtn setBackgroundImage:[UIImage imageNamed:ImageName] forState:UIControlStateHighlighted];
-        
+//        [StarBtn addTarget:self action:@selector(starbutton:) forControlEvents:UIControlEventTouchUpInside];
         [StartContainerView addSubview:StarBtn];
         
         PreFrame.origin.x=PreFrame.origin.x+PreFrame.size.width+5;
@@ -302,14 +346,21 @@
     //START OF OPEN BUTTON
     
     TopOpenBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-    [TopOpenBtn setFrame:CGRectMake(250, TopFastView.frame.origin.y+9, 177/2, 52/2)];
+   
     [TopOpenBtn setBackgroundImage:[UIImage imageNamed:@"TopOpenBtn"] forState:UIControlStateNormal];
     [TopOpenBtn setBackgroundImage:[UIImage imageNamed:@"TopOpenBtn"] forState:UIControlStateSelected];
     [TopOpenBtn setBackgroundImage:[UIImage imageNamed:@"TopOpenBtn"] forState:UIControlStateHighlighted];
+//    [TopOpenBtn addTarget:self action:@selector(topopenbutton) forControlEvents:UIControlEventTouchUpInside];
     [TopInfoView addSubview:TopOpenBtn];
     
-    
-    
+        if ([[UIScreen mainScreen]bounds].size.width == 320)
+        {
+             [TopOpenBtn setFrame:CGRectMake(220, TopFastView.frame.origin.y+9, 177/2, 52/2)];
+        }
+    else
+    {
+         [TopOpenBtn setFrame:CGRectMake(250, TopFastView.frame.origin.y+9, 177/2, 52/2)];
+    }
     
     //END OF OPEN BUTTON
     
@@ -329,9 +380,11 @@ NSArray *ButtonImageArray=[[NSArray alloc]initWithObjects:@"TopTele",@"TopCheckB
         UIView *BtnView=[[UIView alloc]initWithFrame:CGRectMake(PreFrame12.origin.x, 0,PreFrame12.size.width ,PreFrame12.size.height)];
         UIImage *Img=[UIImage imageNamed:[ButtonImageArray objectAtIndex:i]];
       
-        UIImageView *ImagVew=[[UIImageView alloc] initWithFrame:CGRectMake(BtnView.frame.size.width/2-Img.size.width/4, BtnView.frame.size.height/2-Img.size.height/4, Img.size.width/2, Img.size.height/2)];
-        [ImagVew setImage:Img];
+        UIButton *ImagVew=[[UIButton alloc] initWithFrame:CGRectMake(BtnView.frame.size.width/2-Img.size.width/4, BtnView.frame.size.height/2-Img.size.height/4, Img.size.width/2, Img.size.height/2)];
+        [ImagVew setBackgroundImage:Img forState:UIControlStateNormal];
+        //[ImagVew addTarget:self action:@selector(imageview:) forControlEvents:UIControlEventTouchUpInside];
         [BtnView addSubview:ImagVew];
+        ImagVew.tag =i;
         [ButtonContainerView addSubview:BtnView];
         
         UIImageView *VSeperator=[[UIImageView alloc]initWithFrame:CGRectMake(BtnView.frame.origin.x+BtnView.frame.size.width, 4, 1, ButtonContainerView.frame.size.height-8)];
@@ -379,11 +432,14 @@ NSArray *ButtonImageArray=[[NSArray alloc]initWithObjects:@"TopTele",@"TopCheckB
     
     // START OF MAP
     
-    LocationMap=[[UIView alloc] initWithFrame:CGRectMake(LocationBtn.frame.origin.x+LocationBtn.frame.size.width, LocationBtn.frame.origin.y, 385/2, 159/2)];
-    [LocationMap setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"map"]]];
+//    LocationMap=[[UIView alloc] initWithFrame:CGRectMake(LocationBtn.frame.origin.x+LocationBtn.frame.size.width, LocationBtn.frame.origin.y, 385/2, 159/2)];
+//    [LocationMap setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"map"]]];
+//    [MainScroll addSubview:LocationMap];
+    
+    LocationMap = [[MKMapView alloc] initWithFrame:CGRectMake(LocationBtn.frame.origin.x+LocationBtn.frame.size.width, LocationBtn.frame.origin.y, 385/2, 159/2)];
+    //map.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    LocationMap.delegate = self;
     [MainScroll addSubview:LocationMap];
-    
-    
     
     
     //END OF MAP
@@ -1970,7 +2026,8 @@ NSArray *ButtonImageArray=[[NSArray alloc]initWithObjects:@"TopTele",@"TopCheckB
 }
 -(void)Backbutton:(UIButton *)Sender
 {
-    NSLog(@"here ythe  back");
+    ViewController *list = [[ViewController alloc]init];
+    [self.navigationController pushViewController:list animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

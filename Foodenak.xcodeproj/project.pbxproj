@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5E3F2C1A774B5300F2FC4A /* FNHomePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E3F2B1A774B5300F2FC4A /* FNHomePeopleViewController.m */; };
 		2C700C581A6E14DF002BD55B /* FNfollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C700C571A6E14DF002BD55B /* FNfollowersViewController.m */; };
 		2C700C5B1A6E2C97002BD55B /* FNresturentlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C700C5A1A6E2C97002BD55B /* FNresturentlistViewController.m */; };
 		2C700C5E1A6E6681002BD55B /* FNTradingtagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C700C5D1A6E6681002BD55B /* FNTradingtagViewController.m */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C5E3F2A1A774B5300F2FC4A /* FNHomePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNHomePeopleViewController.h; sourceTree = "<group>"; };
+		2C5E3F2B1A774B5300F2FC4A /* FNHomePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNHomePeopleViewController.m; sourceTree = "<group>"; };
 		2C700C561A6E14DF002BD55B /* FNfollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNfollowersViewController.h; sourceTree = "<group>"; };
 		2C700C571A6E14DF002BD55B /* FNfollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNfollowersViewController.m; sourceTree = "<group>"; };
 		2C700C591A6E2C97002BD55B /* FNresturentlistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNresturentlistViewController.h; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 		F938DD7C1A5A5BC800A1F2D6 /* Foodenak */ = {
 			isa = PBXGroup;
 			children = (
+				2C5E3F2A1A774B5300F2FC4A /* FNHomePeopleViewController.h */,
+				2C5E3F2B1A774B5300F2FC4A /* FNHomePeopleViewController.m */,
 				2C813D421A726E8200A1FB4B /* FNNewRestaurantViewController.h */,
 				2C813D431A726E8200A1FB4B /* FNNewRestaurantViewController.m */,
 				2C813D441A726E8200A1FB4B /* FNresturentdetailsViewController.h */,
@@ -334,6 +339,7 @@
 				2CBECFD61A70C1EB000CAA03 /* FNtradingpostViewController.m in Sources */,
 				F91282261A5FB24700BBC00C /* FNmenuViewController.m in Sources */,
 				F91282291A5FE2C700BBC00C /* FNaddItemViewController.m in Sources */,
+				2C5E3F2C1A774B5300F2FC4A /* FNHomePeopleViewController.m in Sources */,
 				2C700C5B1A6E2C97002BD55B /* FNresturentlistViewController.m in Sources */,
 				2C700C611A6E70DD002BD55B /* FNtagViewController.m in Sources */,
 			);

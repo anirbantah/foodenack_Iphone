@@ -19,6 +19,7 @@
 #import "FNFilterViewController.h"
 #import "FNNewRestaurantViewController.h"
 #import "FNReviewViewController.h"
+#import "FNHomePeopleViewController.h"
 
 @interface ViewController ()
 
@@ -123,11 +124,11 @@
     leftmenuscroll.backgroundColor=[UIColor clearColor];
     if ([UIScreen mainScreen].bounds.size.height==568.0f)
     {
-        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,1000)];
+        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,1200)];
     }
     else
     {
-        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,1000)];
+        [leftmenuscroll setContentSize:CGSizeMake(Leftmenu.frame.size.width,1100)];
     }
 
     
@@ -315,6 +316,16 @@
     carddetails.titleLabel.textAlignment=NSTextAlignmentLeft;
     [carddetails addTarget:self action:@selector(carddetails:) forControlEvents:UIControlEventTouchUpInside];
     [leftmenuscroll addSubview:carddetails];
+    
+    
+    UIButton * homepeople=[[UIButton alloc]initWithFrame:CGRectMake(0,carddetails.frame.origin.y+40+7,227, 40)];
+    [homepeople setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [homepeople setTitle:@"Home-People" forState:UIControlStateNormal];
+    homepeople.titleLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
+    homepeople.titleLabel.textAlignment=NSTextAlignmentLeft;
+    [homepeople addTarget:self action:@selector(homepeople:) forControlEvents:UIControlEventTouchUpInside];
+    [leftmenuscroll addSubview:homepeople];
+    
 /* -------------------------- Topview Buttons --------------------------- */
     
     
@@ -3386,20 +3397,7 @@ UIImageView *atmosstar1=[[UIImageView alloc]initWithFrame:CGRectMake(150,Present
 }
 
 -(void)edit:(UIButton *)sender{
-    
-//    FNresturentlistViewController *list = [[FNresturentlistViewController alloc]init];
-//    [self.navigationController pushViewController:list animated:NO];
-    
-//    FNTradingtagViewController *list = [[FNTradingtagViewController alloc]init];
-//    [self.navigationController pushViewController:list animated:NO];
-    
-//    FNusercardsViewController *list = [[FNusercardsViewController alloc]init];
-//    [self.navigationController pushViewController:list animated:NO];
-  
 
-    
-    FNReviewViewController *list = [[FNReviewViewController alloc]init];
-    [self.navigationController pushViewController:list animated:NO];
 
     
 }
@@ -3443,7 +3441,12 @@ UIImageView *atmosstar1=[[UIImageView alloc]initWithFrame:CGRectMake(150,Present
     FNcarddetailsViewController *list = [[FNcarddetailsViewController alloc]init];
     [self.navigationController pushViewController:list animated:NO];
 }
-
+-(void)homepeople:(UIButton *)sender
+{
+    
+    FNHomePeopleViewController *list = [[FNHomePeopleViewController alloc]init];
+    [self.navigationController pushViewController:list animated:NO];
+}
 
 
 

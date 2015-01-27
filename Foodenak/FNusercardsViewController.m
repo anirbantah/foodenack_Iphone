@@ -7,7 +7,7 @@
 //
 
 #import "FNusercardsViewController.h"
-
+#import "ViewController.h"
 @interface FNusercardsViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     
     UIView *Backgroundview,*redline;
@@ -1315,7 +1315,8 @@
 
 -(void)back:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    ViewController *view = [[ViewController alloc]init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

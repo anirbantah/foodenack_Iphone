@@ -1045,8 +1045,7 @@
 //Backbutton function.....
 -(void)Backbutton:(UIButton *)sender{
     
-    ViewController *view = [[ViewController alloc]init];
-    [self.navigationController pushViewController:view animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

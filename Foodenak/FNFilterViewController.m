@@ -7,7 +7,7 @@
 //
 
 #import "FNFilterViewController.h"
-
+#import "ViewController.h"
 @interface FNFilterViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     
     UIView *Backgroundview;
@@ -295,7 +295,8 @@
 
 -(void)back:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    ViewController *view = [[ViewController alloc]init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
